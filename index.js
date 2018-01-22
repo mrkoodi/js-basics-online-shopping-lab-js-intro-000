@@ -19,27 +19,35 @@ function addToCart(item) {
 
 }
 
-function viewCart(){
-   if (cart.length === 0) {
-      console.log("Your shopping cart is empty.");
-    } else {
+function viewCart() {
+  const l = cart.length;
 
-   if (cart.length === 1) {
-      console.log(`In your cart, you have ${Object.keys(cart[0])} at $${Object.values(cart[0])[0]}.`);
-
-    } else if  (cart.length === 2) {
-      console.log(cart);
-      console.log(`In your cart, you have ${Object.keys(cart[0])} at $${Object.values(cart[0])} and ${Object.keys(cart[1])} at $${Object.values(cart[1])}.`);
-    } else if (cart.length >= 3 ) {
-       for (var i=0; i < cart.length; i++) {
-    cart[i];
-      console.log(`In your cart, you have ${Object.keys(cart[i])} at $${Object.values(cart[i])[0]}, ${Object.keys(cart[i])} at $${Object.values(cart[i])[1]}, and ${Object.keys(cart[i])} at $${Object.values(cart[i])[2]}.`);
-    }
-
-     }
+  if (!l) {
+    return console.log("Your shopping cart is empty.");
   }
 
+  let itemsAndPrices = [];
 
+  for (let i = 0; i < l; i++) {
+    let itemAndPrice = cart[i];
+    let item = Object.keys(itemAndPrice)[0];
+    let price = itemAndPrice[item];
+
+    itemsAndPrices.push(`${item} at \$${price}`);
+  }
+
+  switch(itemsAndPrices.length) {
+    case 1:
+      break;
+    case 2:
+      itemsAndPrices = itemsAndPrices.join(" and ");
+      break;
+    default:
+      itemsAndPrices[l-1] = "and ".concat(itemsAndPrices[l-1]);
+      itemsAndPrices = itemsAndPrices.join(", ");
+  }
+
+  console.log(`In your cart, you have ${itemsAndPrices}.`);
 }
 
 function total() {
