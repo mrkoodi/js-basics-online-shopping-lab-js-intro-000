@@ -63,6 +63,7 @@ function removeFromCart(item) {
   // write your code here
   if (cart.hasOwnProperty("toString")) {
     console.log("That item is not in your cart.");
+    return cart;
   } else if (cart.hasOwnProperty(item)) {
     cart.splice(0, 1);
 
@@ -74,6 +75,7 @@ function placeOrder(cardNumber) {
   // write your code here
   if (cardNumber === undefined) {
     console.log("Sorry, we don't have a credit card on file for you.");
+    
   } else {
     console.log(`Your total cost is $${[total()]}, which will be charged to the card ${cardNumber}.`);
   }
