@@ -61,9 +61,9 @@ function total() {
 
 function removeFromCart(item) {
   // write your code here
-  if (cart.hasOwnProperty(cart[item] !== item)) {
+  if (cart.hasOwnProperty("toString")) {
     console.log("That item is not in your cart.");
-  } else if (cart.hasOwnProperty(cart[item])) {
+  } else if (cart.hasOwnProperty(item)) {
     cart[item].pop();
 
   }
